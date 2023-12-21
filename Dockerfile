@@ -1,12 +1,2 @@
-FROM python:3.10-buster
-
-WORKDIR /app
-
-COPY requirements.txt .
-
-RUN pip install -r requirements.txt
-
-COPY app.py .
-COPY Beckett_Jenen_Resume.pdf .
-
-ENTRYPOINT ["flask", "run", "--host=0.0.0.0", "--port=8080"]
+FROM docker.io/nginxinc/nginx-unprivileged
+COPY Beckett_Jenen_Resume.pdf /usr/share/nginx/html/
